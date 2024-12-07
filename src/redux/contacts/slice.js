@@ -1,7 +1,6 @@
-import { createSelector, createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addContact, deleteContact, fetchContacts } from './contactsOps';
-import { selectNameFilter } from './filtersSlice';
 import toast from 'react-hot-toast';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { addContact, deleteContact, fetchContacts } from './operations';
 
 const initialState = {
   items: [],
@@ -51,18 +50,5 @@ const slice = createSlice({
       );
   },
 });
-
-export const selectContacts = state => state.contacts.items;
-export const selectLoading = state => state.contacts.loading;
-export const selectError = state => state.contacts.error;
-
-export const selectFilteredContacts = createSelector(
-  [selectContacts, selectNameFilter],
-  (contacts, newName) => {
-    return contacts.filter(contact => {
-      return contact.name.toLowerCase().includes(newName);
-    });
-  }
-);
 
 export default slice.reducer;

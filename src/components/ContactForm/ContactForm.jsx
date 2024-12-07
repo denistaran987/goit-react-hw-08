@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { useId } from 'react';
 import s from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsOps';
+import { addContact } from '../../redux/contacts/operations';
 
 const ContactForm = () => {
   const nameFieldId = useId();
