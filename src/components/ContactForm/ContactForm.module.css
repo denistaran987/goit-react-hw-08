@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 6px;
+}
+
+.field {
+  width: 300px;
+  height: 28px;
+  padding: 10px 16px;
+  outline: none;
+  border: none;
+  transition: box-shadow 0.2s;
+}
+
+.field:hover,
+.field:focus {
+  box-shadow: 0 0 3px 3px #00ced1;
+}
+
+.button {
+  width: 150px;
+  margin-inline: auto;
+}
+
+.error {
+  color: red;
+}

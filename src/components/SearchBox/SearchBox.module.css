@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 6px;
+}
+
+.label {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.field {
+  width: 300px;
+  height: 28px;
+  padding: 10px 16px;
+  outline: none;
+  border: none;
+  transition: box-shadow 0.2s;
+}
+
+.field:hover,
+.field:focus {
+  box-shadow: 0 0 3px 3px #00ced1;
+}

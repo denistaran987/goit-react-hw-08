@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 4px;
+}
+
+p {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+}
+
+p svg {
+  color: #fff;
+}
+
+button {
+  padding: 6px 16px;
+  height: 40px;
+  font-weight: 600;
+  border: 1px solid grey;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  color: #fff;
+  background-color: #00ced1;
+}
+button:active {
+  background-color: lightgray;
+}
