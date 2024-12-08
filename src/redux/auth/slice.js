@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { login, register } from './operations';
 
 const initialState = {
   user: {
@@ -13,8 +14,16 @@ const initialState = {
 export const slice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
-  extraReducers: builder => {},
+  extraReducers: builder => {
+    builder.addCase(register.fulfilled, (state, action) => {
+      state.user.name = action.payload.name;
+      state.user.email = action.payload.email;
+      state.user.password = action.payload.password;
+    });
+    builder.addCase(login.fulfilled, (state, action) => {
+      state.token = action.payload.token;
+    });
+  },
 });
 
 export default slice.reducer;
