@@ -16,12 +16,14 @@ export const slice = createSlice({
   initialState,
   extraReducers: builder => {
     builder.addCase(register.fulfilled, (state, action) => {
-      state.user.name = action.payload.name;
-      state.user.email = action.payload.email;
-      state.user.password = action.payload.password;
+      state.user = action.payload;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
     });
     builder.addCase(login.fulfilled, (state, action) => {
+      state.user = action.payload;
       state.token = action.payload.token;
+      state.isLoggedIn = true;
     });
   },
 });
