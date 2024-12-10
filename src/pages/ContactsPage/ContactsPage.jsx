@@ -16,24 +16,28 @@ const ContactsPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(fetchContacts());
-    }
-  }, [dispatch, isLoggedIn]);
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  if (!isLoggedIn) {
+    return;
+  }
 
   return (
-    <div className="wrapper">
-      <h1 style={{ fontSize: 40, lineHeight: 1.2 }}>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {!loading && !error && contacts.length === 0 && (
-        <p style={{ color: 'red' }}>
-          Sorry, no contacts found. Please add a contact to your phonebook.
-        </p>
-      )}
-      {loading && <Loader />}
-      <ContactList />
-    </div>
+    isLoggedIn && (
+      <div className="wrapper">
+        <h1 style={{ fontSize: 40, lineHeight: 1.2 }}>Phonebook</h1>
+        <ContactForm />
+        <SearchBox />
+        {!loading && !error && contacts.length === 0 && (
+          <p style={{ color: 'red' }}>
+            Sorry, no contacts found. Please add a contact to your phonebook.
+          </p>
+        )}
+        {loading && <Loader />}
+        <ContactList />
+      </div>
+    )
   );
 };
 export default ContactsPage;

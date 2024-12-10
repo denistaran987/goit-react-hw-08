@@ -19,9 +19,23 @@ const LoginForm = () => {
     dispatch(login(values))
       .unwrap()
       .then(res => {
-        console.log(res);
-        toast.success(`Welcome, ${res.user.name}`);
+        toast.success(`Welcome, ${res.user.name}`, {
+          style: { backgroundColor: '#00ced1', fontWeight: 'bold' },
+          iconTheme: {
+            primary: 'white',
+            secondary: 'black',
+          },
+        });
         navigate('/contacts');
+      })
+      .catch(() => {
+        toast.error('Invalid login or password. Please try again.', {
+          style: { backgroundColor: '#FFCCCC', fontWeight: 'bold' },
+          iconTheme: {
+            primary: 'white',
+            secondary: 'red',
+          },
+        });
       });
     resetForm();
   };
@@ -39,26 +53,29 @@ const LoginForm = () => {
   });
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={contactFormSchema}
-      validateOnBlur={false}
-    >
-      <Form>
-        <label style={{ display: 'flex', flexDirection: 'column' }}>
-          Email
-          <Field type="text" name="email" placeholder="Enter your email" />
-          <ErrorMessage className={s.error} name="email" component="span" />
-        </label>{' '}
-        <label style={{ display: 'flex', flexDirection: 'column' }}>
-          Password
-          <Field type="text" name="password" placeholder="Enter your password" />
-          <ErrorMessage className={s.error} name="password" component="span" />
-        </label>
-        <button type="submit">Register</button>
-      </Form>
-    </Formik>
+    <>
+      <h2>Log In</h2>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={contactFormSchema}
+        validateOnBlur={false}
+      >
+        <Form>
+          <label style={{ display: 'flex', flexDirection: 'column' }}>
+            Email
+            <Field type="text" name="email" placeholder="Enter your email" />
+            <ErrorMessage className={s.error} name="email" component="span" />
+          </label>{' '}
+          <label style={{ display: 'flex', flexDirection: 'column' }}>
+            Password
+            <Field type="text" name="password" placeholder="Enter your password" />
+            <ErrorMessage className={s.error} name="password" component="span" />
+          </label>
+          <button type="submit">Log In</button>
+        </Form>
+      </Formik>
+    </>
   );
 };
 export default LoginForm;
