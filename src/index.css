@@ -16,6 +16,13 @@ body {
   background-color: #333333;
 }
 
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;

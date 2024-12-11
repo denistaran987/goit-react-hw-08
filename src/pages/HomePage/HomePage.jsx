@@ -1,4 +1,15 @@
+import s from '../HomePage/HomePage.module.css';
+
 const HomePage = () => {
-  return <div></div>;
+  return (
+    <section className={s['home-section']}>
+      <div className="container">
+        <h1 className={s.title}>Welcome to Phonebook</h1>
+        <span className={s.text}>
+          If you want to use the Phonebook, you need to Register and Log In
+        </span>
+      </div>
+    </section>
+  );
 };
 export default HomePage;

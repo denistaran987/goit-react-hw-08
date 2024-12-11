@@ -1,0 +1,13 @@
+.header {
+  padding-block: 20px;
+  background-color: rgba(37, 80, 130, 0.5);
+  box-shadow: 0 0 3px 3px lightskyblue;
+  font-size: 20px;
+  font-weight: bold;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 12px;
+}

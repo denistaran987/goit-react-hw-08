@@ -25,30 +25,28 @@ const ContactForm = () => {
   });
 
   return (
-    <>
-      <Formik
-        initialValues={{ name: '', number: '' }}
-        onSubmit={handleSubmit}
-        validationSchema={contactFormSchema}
-        validateOnBlur={false}
-      >
-        <Form className={s.form}>
-          <label className={s.label} htmlFor={nameFieldId}>
-            Name
-            <Field className={s.field} type="text" name="name" id={nameFieldId} />
-            <ErrorMessage className={s.error} name="name" component="span" />
-          </label>
-          <label className={s.label} htmlFor={numberFieldId}>
-            Number
-            <Field className={s.field} type="text" name="number" id={numberFieldId} />
-            <ErrorMessage className={s.error} name="number" component="span" />
-          </label>
-          <button className={s.button} type="submit">
-            Add contact
-          </button>
-        </Form>
-      </Formik>
-    </>
+    <Formik
+      initialValues={{ name: '', number: '' }}
+      onSubmit={handleSubmit}
+      validationSchema={contactFormSchema}
+      validateOnBlur={false}
+    >
+      <Form className={s.form}>
+        <label className={s.label} htmlFor={nameFieldId}>
+          Name
+          <Field className={s.field} type="text" name="name" id={nameFieldId} />
+          <ErrorMessage className={s.error} name="name" component="span" />
+        </label>
+        <label className={s.label} htmlFor={numberFieldId}>
+          Number
+          <Field className={s.field} type="text" name="number" id={numberFieldId} />
+          <ErrorMessage className={s.error} name="number" component="span" />
+        </label>
+        <button className={s.button} type="submit">
+          Add contact
+        </button>
+      </Form>
+    </Formik>
   );
 };
 export default ContactForm;

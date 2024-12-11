@@ -1,7 +1,6 @@
 import './App.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { refreshUser } from './redux/auth/operations';
 import { Route, Routes } from 'react-router';
 import HomePage from './pages/HomePage/HomePage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
@@ -11,6 +10,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Layout from './components/Layout/Layout';
 import { selectIsRefreshing } from './redux/auth/selectors';
 import Loader from './components/Loader/Loader';
+import { refreshUser } from './redux/auth/operations';
 
 function App() {
   const dispatch = useDispatch();
