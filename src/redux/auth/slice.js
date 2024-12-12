@@ -11,17 +11,19 @@ const initialState = {
   isRefreshing: false,
 };
 
+console.log(initialState.user);
+
 export const slice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
     builder.addCase(register.fulfilled, (state, action) => {
-      state.user = action.payload;
+      state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     });
     builder.addCase(login.fulfilled, (state, action) => {
-      state.user = action.payload;
+      state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     });

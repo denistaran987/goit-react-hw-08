@@ -11,6 +11,7 @@ import Layout from './components/Layout/Layout';
 import { selectIsRefreshing } from './redux/auth/selectors';
 import Loader from './components/Loader/Loader';
 import { refreshUser } from './redux/auth/operations';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +27,14 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute>
+              <ContactsPage />
+            </PrivateRoute>
+          }
+        />
       </Route>
       <Route path="/register" element={<RegistrationPage />} />
       <Route path="/login" element={<LoginPage />} />

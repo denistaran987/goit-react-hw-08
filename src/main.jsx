@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+// import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import 'modern-normalize';
@@ -10,14 +10,14 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <PersistGate loading={null} persistor={persistor}>
-          <Toaster position="top-right" reverseOrder={false} />
-          <App />
-        </PersistGate>
-      </BrowserRouter>
-    </Provider>
-  </StrictMode>
+  // <StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <Toaster position="top-center" reverseOrder={false} />
+        <App />
+      </PersistGate>
+    </BrowserRouter>
+  </Provider>
+  // </StrictMode>
 );
