@@ -1,15 +1,18 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/operations';
 import * as Yup from 'yup';
 import s from './LoginForm.module.css';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router';
 import { IoArrowUndo } from 'react-icons/io5';
+import { selectIsLoading } from '../../redux/auth/selectors';
+import Loader from '../Loader/Loader';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isLoading = useSelector(selectIsLoading);
 
   const initialValues = {
     email: '',
@@ -20,7 +23,7 @@ const LoginForm = () => {
     dispatch(login(values))
       .unwrap()
       .then(res => {
-        toast.success(`Welcome, ${res.user.name}`, {
+        toast.success(`Welcome, "${res.user.name}"`, {
           style: { backgroundColor: '#00ced1', fontWeight: 'bold' },
           iconTheme: {
             primary: 'white',
@@ -55,6 +58,7 @@ const LoginForm = () => {
 
   return (
     <section className={s.section}>
+      {isLoading && <Loader />}
       <Link className={s.goback} to="/">
         <IoArrowUndo />
         Go Home

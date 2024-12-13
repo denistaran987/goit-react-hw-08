@@ -19,7 +19,7 @@ const ContactForm = () => {
     dispatch(addContact(newContact))
       .unwrap()
       .then(res => {
-        toast.success(`Contact ${res.name} has been successfully added to the phonebook.`, {
+        toast.success(`Contact "${res.name}" has been successfully added to the phonebook.`, {
           style: { backgroundColor: '#00ced1', fontWeight: 'bold' },
           iconTheme: {
             primary: 'white',

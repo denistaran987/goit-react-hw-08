@@ -1,15 +1,18 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import * as Yup from 'yup';
 import s from './RegistrationForm.module.css';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router';
 import { IoArrowUndo } from 'react-icons/io5';
+import Loader from '../Loader/Loader';
+import { selectIsLoading } from '../../redux/auth/selectors';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isLoading = useSelector(selectIsLoading);
 
   const initialValues = {
     name: '',
@@ -32,7 +35,7 @@ const RegistrationForm = () => {
       .unwrap()
       .then(res => {
         console.log(res);
-        toast.success(`Registration successful! Welcome, ${res.user.name}!`, {
+        toast.success(`Registration successful! Welcome, "${res.user.name}!"`, {
           style: { backgroundColor: '#00ced1', fontWeight: 'bold' },
           iconTheme: {
             primary: 'white',
@@ -65,10 +68,15 @@ const RegistrationForm = () => {
       .min(3, 'Too Short!')
       .max(50, 'Too Long')
       .required('Please, enter the password'),
+    confirmPassword: Yup.string()
+      .min(3, 'Too Short!')
+      .max(50, 'Too Long')
+      .required('Please, confirm the password'),
   });
 
   return (
     <section className={s.section}>
+      {isLoading && <Loader />}
       <Link className={s.goback} to="/">
         <IoArrowUndo />
         Go Home
@@ -96,7 +104,7 @@ const RegistrationForm = () => {
               Password
               <Field
                 className={s.field}
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Enter your password"
               />
@@ -106,11 +114,11 @@ const RegistrationForm = () => {
               Confirm Password
               <Field
                 className={s.field}
-                type="text"
+                type="password"
                 name="confirmPassword"
-                placeholder="Enter your password"
+                placeholder="Confirm your password"
               />
-              <ErrorMessage className={s.error} name="password" component="span" />
+              <ErrorMessage className={s.error} name="confirmPassword" component="span" />
             </label>
             <button className={s.button} type="submit">
               Register

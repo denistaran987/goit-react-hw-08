@@ -41,14 +41,17 @@ export const slice = createSlice({
         state.isRefreshing = false;
       })
       .addMatcher(isAnyOf(register.pending, login.pending), state => {
+        state.isLoading = true;
         state.isLoggedIn = false;
       })
       .addMatcher(isAnyOf(register.fulfilled, login.fulfilled), (state, action) => {
+        state.isLoading = false;
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addMatcher(isAnyOf(register.rejected, login.rejected, logout.rejected), state => {
+        state.isLoading = false;
         state.isLoggedIn = false;
       });
   },

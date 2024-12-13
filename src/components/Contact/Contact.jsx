@@ -1,13 +1,9 @@
 import { FaPhone } from 'react-icons/fa6';
 import { FaUserLarge } from 'react-icons/fa6';
 import s from './Contact.module.css';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/operations';
-import { MdDeleteForever } from 'react-icons/md';
-import MouseHoverPopover from '../Popover/Popover';
+import ConfirmPoper from '../Popper/Popper';
 
 const Contact = ({ contact }) => {
-  const dispatch = useDispatch();
   const { name, number, id } = contact;
 
   return (
@@ -20,17 +16,7 @@ const Contact = ({ contact }) => {
           <FaPhone /> {number}
         </p>
       </div>
-      <button
-        className={s.button}
-        onClick={() => {
-          dispatch(deleteContact(id));
-        }}
-        type="button"
-      >
-        <MouseHoverPopover popoverText="Delete">
-          <MdDeleteForever className={s.icon} />
-        </MouseHoverPopover>
-      </button>
+      <ConfirmPoper id={id} />
     </>
   );
 };

@@ -30,11 +30,11 @@ const MouseHoverPopover = ({ popoverText, children }) => {
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: 'top',
+          vertical: 'bottom',
           horizontal: 'left',
         }}
         transformOrigin={{
-          vertical: 'bottom',
+          vertical: 'top',
           horizontal: 'left',
         }}
         onClose={handlePopoverClose}

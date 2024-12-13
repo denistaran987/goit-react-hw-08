@@ -1,54 +1,62 @@
 import { useState, useRef } from 'react';
-import { Popper, Button, Typography } from '@mui/material';
+import { Popper, Typography } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contacts/operations';
+import MouseHoverPopover from '../Popover/Popover';
+import { MdDeleteForever } from 'react-icons/md';
+import s from '../Popper/Popper.module.css';
+import toast from 'react-hot-toast';
 
-const ConfirmPopper = () => {
+const ConfirmPopper = ({ id }) => {
   const [open, setOpen] = useState(false);
-  const anchorRef = useRef(null); // Ссылка на элемент, к которому будет привязан Popper
+  const anchorRef = useRef(null);
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    setOpen(prev => !prev); // Переключение состояния отображения Popper
+    setOpen(prev => !prev);
   };
 
   const handleConfirm = () => {
-    console.log('Confirmed!');
-    setOpen(false); // Закрываем Popper после подтверждения
+    dispatch(deleteContact(id))
+      .unwrap()
+      .then(res => {
+        return toast.error(`The contact "${res.name}" has been successfully removed.`, {
+          style: { backgroundColor: '#FFCCCC', fontWeight: 'bold' },
+          iconTheme: {
+            primary: 'white',
+            secondary: 'red',
+          },
+        });
+      })
+      .catch(e => {
+        console.log(e.message);
+      });
+    setOpen(false);
   };
 
   const handleCancel = () => {
-    console.log('Cancelled!');
-    setOpen(false); // Закрываем Popper после отмены
+    setOpen(false);
   };
 
   return (
     <div>
-      {/* Кнопка, по которой открывается Popper */}
-      <Button ref={anchorRef} onClick={handleClick} variant="contained">
-        Show Popper
-      </Button>
-
-      {/* Popper с кнопками для подтверждения и отмены */}
-      <Popper open={open} anchorEl={anchorRef.current} placement="bottom-start">
-        <div
-          style={{
-            padding: '10px',
-            backgroundColor: 'white',
-            border: '1px solid black',
-            borderRadius: '4px',
-          }}
-        >
-          <Typography>Are you sure?</Typography>
-          <div style={{ marginTop: '10px' }}>
-            <Button
-              onClick={handleConfirm}
-              variant="contained"
-              color="primary"
-              style={{ marginRight: '10px' }}
-            >
+      <button className={s['button-icon']} ref={anchorRef} onClick={handleClick}>
+        <MouseHoverPopover popoverText="Delete">
+          <MdDeleteForever className={s.icon} />
+        </MouseHoverPopover>
+      </button>
+      <Popper open={open} anchorEl={anchorRef.current} placement="top-start">
+        <div className={s.popper}>
+          <Typography className={s.text}>
+            <b>Are you sure?</b>
+          </Typography>
+          <div className={s['buttons-wrapper']}>
+            <button type="button" className={s.button} onClick={handleConfirm}>
               Confirm
-            </Button>
-            <Button onClick={handleCancel} variant="outlined" color="secondary">
+            </button>
+            <button type="button" className={s.button} onClick={handleCancel}>
               Cancel
-            </Button>
+            </button>
           </div>
         </div>
       </Popper>
