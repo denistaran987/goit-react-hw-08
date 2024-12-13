@@ -77,7 +77,7 @@ const LoginForm = () => {
               Password
               <Field
                 className={s.field}
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Enter your password"
               />

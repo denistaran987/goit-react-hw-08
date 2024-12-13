@@ -15,9 +15,19 @@ const RegistrationForm = () => {
     name: '',
     email: '',
     password: '',
+    confirmPassword: '',
   };
 
   const handleSubmit = (values, { resetForm }) => {
+    if (values.password !== values.confirmPassword) {
+      return toast.error('Password is not correct', {
+        style: { backgroundColor: '#FFCCCC', fontWeight: 'bold' },
+        iconTheme: {
+          primary: 'white',
+          secondary: 'red',
+        },
+      });
+    }
     dispatch(register(values))
       .unwrap()
       .then(res => {
@@ -88,6 +98,16 @@ const RegistrationForm = () => {
                 className={s.field}
                 type="text"
                 name="password"
+                placeholder="Enter your password"
+              />
+              <ErrorMessage className={s.error} name="password" component="span" />
+            </label>
+            <label className={s.label}>
+              Confirm Password
+              <Field
+                className={s.field}
+                type="text"
+                name="confirmPassword"
                 placeholder="Enter your password"
               />
               <ErrorMessage className={s.error} name="password" component="span" />

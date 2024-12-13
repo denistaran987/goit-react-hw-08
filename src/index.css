@@ -23,6 +23,27 @@ body {
   padding-inline: 15px;
 }
 
+button {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  height: 40px;
+  font-weight: 600;
+  border: 1px solid grey;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  color: #fff;
+  background-color: #00ced1;
+}
+
+button:active {
+  background-color: lightgray;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;

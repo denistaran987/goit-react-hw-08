@@ -15,20 +15,13 @@ p svg {
   color: #fff;
 }
 
-button {
-  padding: 6px 16px;
-  height: 40px;
-  font-weight: 600;
-  border: 1px solid grey;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+.button:hover {
+  background-color: red;
 }
 
-button:hover {
-  color: #fff;
-  background-color: #00ced1;
-}
-button:active {
-  background-color: lightgray;
+.icon {
+  width: 30px;
+  height: 30px;
+  color: #00ced1;
+  background-color: transparent;
 }

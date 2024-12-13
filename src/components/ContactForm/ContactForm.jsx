@@ -4,6 +4,7 @@ import { useId } from 'react';
 import s from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
+import toast from 'react-hot-toast';
 
 const ContactForm = () => {
   const nameFieldId = useId();
@@ -15,7 +16,26 @@ const ContactForm = () => {
       number: values.number,
     };
 
-    dispatch(addContact(newContact));
+    dispatch(addContact(newContact))
+      .unwrap()
+      .then(res => {
+        toast.success(`Contact ${res.name} has been successfully added to the phonebook.`, {
+          style: { backgroundColor: '#00ced1', fontWeight: 'bold' },
+          iconTheme: {
+            primary: 'white',
+            secondary: 'black',
+          },
+        });
+      })
+      .catch(e => {
+        toast.error(`Failed to add contact: ${e.message}`, {
+          style: { backgroundColor: '#FFCCCC', fontWeight: 'bold' },
+          iconTheme: {
+            primary: 'white',
+            secondary: 'black',
+          },
+        });
+      });
     actions.resetForm();
   };
 

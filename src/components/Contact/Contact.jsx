@@ -3,6 +3,8 @@ import { FaUserLarge } from 'react-icons/fa6';
 import s from './Contact.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/operations';
+import { MdDeleteForever } from 'react-icons/md';
+import MouseHoverPopover from '../Popover/Popover';
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
@@ -19,12 +21,15 @@ const Contact = ({ contact }) => {
         </p>
       </div>
       <button
+        className={s.button}
         onClick={() => {
           dispatch(deleteContact(id));
         }}
         type="button"
       >
-        Delete
+        <MouseHoverPopover popoverText="Delete">
+          <MdDeleteForever className={s.icon} />
+        </MouseHoverPopover>
       </button>
     </>
   );

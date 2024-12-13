@@ -22,7 +22,7 @@ const ContactsPage = () => {
   return (
     <div className={s.section}>
       <div className={clsx('container', s['contacts-container'])}>
-        <h1 style={{ fontSize: 40, lineHeight: 1.2 }}>Phonebook</h1>
+        <h1 className={s.title}>Phonebook</h1>
         <ContactForm />
         <SearchBox />
         {!loading && !error && contacts.length === 0 && (

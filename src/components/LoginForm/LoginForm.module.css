@@ -72,7 +72,7 @@
   height: 30px;
   visibility: hidden;
   opacity: 0;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
 }
 
 .goback:hover svg {

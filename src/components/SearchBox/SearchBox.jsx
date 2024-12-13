@@ -10,7 +10,7 @@ const SearchBox = () => {
   return (
     <div className={s.container}>
       <label className={s.label} htmlFor={findId}>
-        Find contacts by name
+        Find contacts by name or number
       </label>
       <input
         className={s.field}

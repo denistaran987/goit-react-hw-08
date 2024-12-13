@@ -11,7 +11,8 @@ import Layout from './components/Layout/Layout';
 import { selectIsRefreshing } from './redux/auth/selectors';
 import Loader from './components/Loader/Loader';
 import { refreshUser } from './redux/auth/operations';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
+import { RestrictedRoute } from './components/RestrictedRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,14 +31,28 @@ function App() {
         <Route
           path="/contacts"
           element={
-            <PrivateRoute>
+            <PrivateRoute redirectTo="/login">
               <ContactsPage />
             </PrivateRoute>
           }
         />
       </Route>
-      <Route path="/register" element={<RegistrationPage />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/register"
+        element={
+          <RestrictedRoute redirectTo="/contacts">
+            <RegistrationPage />
+          </RestrictedRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <RestrictedRoute redirectTo="/contacts">
+            <LoginPage />
+          </RestrictedRoute>
+        }
+      />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
