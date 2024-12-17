@@ -17,7 +17,8 @@
 }
 
 .field {
-  width: 300px;
+  width: 100%;
+  max-width: 350px;
   height: 28px;
   padding: 10px 16px;
   outline: none;

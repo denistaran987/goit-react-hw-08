@@ -1,7 +1,7 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 20px;
 }
 
 .wrapper {
@@ -9,7 +9,37 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px;
-  width: 400px;
+  width: 100%;
+  max-width: 380px;
   border: 1px solid #fff;
   border-radius: 8px;
+}
+
+@media (min-width: 1280px) {
+  .wrapper {
+    width: 400px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wrapper {
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .list {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .list {
+    width: 290px;
+  }
 }

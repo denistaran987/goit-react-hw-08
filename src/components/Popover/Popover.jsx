@@ -1,5 +1,6 @@
 import { Popover, Typography } from '@mui/material';
 import { useState } from 'react';
+import s from '../Popover/Popover.module.css';
 
 const MouseHoverPopover = ({ popoverText, children }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -26,7 +27,10 @@ const MouseHoverPopover = ({ popoverText, children }) => {
       </Typography>
       <Popover
         id="mouse-over-popover"
-        sx={{ pointerEvents: 'none' }}
+        className={s.popover}
+        sx={{
+          pointerEvents: 'none',
+        }}
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{

@@ -17,11 +17,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 12px;
+  row-gap: 20px;
   margin-inline: auto;
 }
 
 .label {
+  position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 6px;
@@ -29,9 +30,54 @@
   max-width: 400px;
 }
 
-.label:nth-child(2) {
+.container-field {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.label-password {
   margin-bottom: 12px;
 }
+
+.field-checkbox {
+  display: none;
+}
+
+.label-checkbox {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 38px;
+  right: 7px;
+  color: black;
+  user-select: none;
+  cursor: pointer;
+}
+
+.label-checkbox svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* .label-checkbox::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: '';
+  width: 100%;
+  height: 2px;
+  border: 2px solid black;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+} */
+
+/* .field-checkbox:checked {
+  color: #00ced1;
+} */
 
 .field {
   padding: 10px 16px;
@@ -83,4 +129,26 @@
 
 .error {
   color: red;
+}
+
+@media (max-width: 768px) {
+  .goback {
+    font-size: 18px;
+  }
+  .goback svg {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 36px;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+  }
 }

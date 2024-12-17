@@ -15,6 +15,12 @@ p svg {
   color: #fff;
 }
 
+.button-container {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
 .button:hover {
   background-color: red;
 }

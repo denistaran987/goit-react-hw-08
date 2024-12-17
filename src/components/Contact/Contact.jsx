@@ -1,7 +1,8 @@
 import { FaPhone } from 'react-icons/fa6';
 import { FaUserLarge } from 'react-icons/fa6';
 import s from './Contact.module.css';
-import ConfirmPoper from '../Popper/Popper';
+import ConfirmPoper from '../ConfirmPopper/ConfirmPopper';
+import EditModal from '../EditModal/EditModal';
 
 const Contact = ({ contact }) => {
   const { name, number, id } = contact;
@@ -16,7 +17,10 @@ const Contact = ({ contact }) => {
           <FaPhone /> {number}
         </p>
       </div>
-      <ConfirmPoper id={id} />
+      <div className={s['button-container']}>
+        <EditModal id={id} contact={contact} />
+        <ConfirmPoper id={id} />
+      </div>
     </>
   );
 };

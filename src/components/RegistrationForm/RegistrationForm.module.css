@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 12px;
+  row-gap: 20px;
   margin-inline: auto;
 }
 
@@ -31,6 +31,37 @@
 
 .label:nth-child(4) {
   margin-bottom: 12px;
+}
+
+.container-field {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.label-password {
+  margin-bottom: 12px;
+}
+
+.field-checkbox {
+  display: none;
+}
+
+.label-checkbox {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 38px;
+  right: 7px;
+  color: black;
+  user-select: none;
+  cursor: pointer;
+}
+
+.label-checkbox svg {
+  width: 26px;
+  height: 26px;
 }
 
 .field {
@@ -83,4 +114,33 @@
 
 .error {
   color: red;
+}
+
+@media (max-width: 768px) {
+  .title {
+    margin-bottom: 0;
+  }
+
+  .goback {
+    top: 8px;
+    left: 10px;
+    font-size: 18px;
+  }
+
+  .goback svg {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 36px;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+  }
 }

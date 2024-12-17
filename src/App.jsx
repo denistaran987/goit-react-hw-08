@@ -30,7 +30,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route
-            path="/contacts"
+            path="contacts"
             element={
               <PrivateRoute redirectTo="/login">
                 <ContactsPage />
@@ -39,7 +39,7 @@ function App() {
           />
         </Route>
         <Route
-          path="/register"
+          path="register"
           element={
             <RestrictedRoute redirectTo="/contacts">
               <RegistrationPage />
@@ -47,7 +47,7 @@ function App() {
           }
         />
         <Route
-          path="/login"
+          path="login"
           element={
             <RestrictedRoute redirectTo="/contacts">
               <LoginPage />

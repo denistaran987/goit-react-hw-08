@@ -5,14 +5,20 @@ import * as Yup from 'yup';
 import s from './RegistrationForm.module.css';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router';
-import { IoArrowUndo } from 'react-icons/io5';
+import { IoArrowUndo, IoEyeOutline } from 'react-icons/io5';
 import Loader from '../Loader/Loader';
 import { selectIsLoading } from '../../redux/auth/selectors';
+import { useState } from 'react';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleCheckboxChange = event => {
+    setShowPassword(event.target.checked);
+  };
 
   const initialValues = {
     name: '',
@@ -100,26 +106,50 @@ const RegistrationForm = () => {
               <Field className={s.field} type="text" name="email" placeholder="Enter your email" />
               <ErrorMessage className={s.error} name="email" component="span" />
             </label>
-            <label className={s.label}>
-              Password
-              <Field
-                className={s.field}
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-              />
-              <ErrorMessage className={s.error} name="password" component="span" />
-            </label>
-            <label className={s.label}>
-              Confirm Password
-              <Field
-                className={s.field}
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm your password"
-              />
-              <ErrorMessage className={s.error} name="confirmPassword" component="span" />
-            </label>
+            <div className={s['container-field']}>
+              <label className={s.label}>
+                Password
+                <Field
+                  className={s.field}
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Enter your password"
+                />
+                <ErrorMessage className={s.error} name="password" component="span" />
+              </label>
+              <label className={s['label-checkbox']}>
+                <IoEyeOutline />
+                <Field
+                  className={s['field-checkbox']}
+                  type="checkbox"
+                  name="checkbox"
+                  checked={showPassword}
+                  onChange={handleCheckboxChange}
+                />
+              </label>
+            </div>
+            <div className={s['container-field']}>
+              <label className={s.label}>
+                Confirm Password
+                <Field
+                  className={s.field}
+                  type={showPassword ? 'text' : 'password'}
+                  name="confirmPassword"
+                  placeholder="Confirm your password"
+                />
+                <ErrorMessage className={s.error} name="confirmPassword" component="span" />
+              </label>
+              <label className={s['label-checkbox']}>
+                <IoEyeOutline />
+                <Field
+                  className={s['field-checkbox']}
+                  type="checkbox"
+                  name="checkbox"
+                  checked={showPassword}
+                  onChange={handleCheckboxChange}
+                />
+              </label>
+            </div>
             <button className={s.button} type="submit">
               Register
             </button>

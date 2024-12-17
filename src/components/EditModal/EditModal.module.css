@@ -1,0 +1,84 @@
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 10px;
+  width: 100vw;
+  max-width: 500px;
+  height: 100vh;
+  max-height: 360px;
+  border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 20px;
+    max-width: 290px;
+    max-height: 280px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 16px;
+}
+
+.field {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 4px;
+}
+
+.field:hover {
+  border-color: transparent;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.icon {
+  width: 26px;
+  height: 26px;
+  color: #00ced1;
+  background-color: transparent;
+}
+
+.text {
+  color: #333333;
+}
+
+.button {
+  padding: 10px 50px;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+.button-icon:hover {
+  background-color: yellow;
+}
+
+.error {
+  color: red;
+}
+
+@media (max-width: 480px) {
+  .button-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 35px;
+  }
+}

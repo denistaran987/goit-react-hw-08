@@ -10,6 +10,10 @@
   column-gap: 8px;
 }
 
+.user-icon {
+  color: #fff;
+}
+
 .logout-button {
   position: relative;
   display: flex;
@@ -24,10 +28,6 @@
   opacity: 1;
   visibility: visible;
   transition: opacity 0.3s ease;
-}
-
-.user-icon {
-  color: #fff;
 }
 
 .logout-icon {
@@ -50,4 +50,15 @@
 .logout-button:hover .logout-icon {
   opacity: 1;
   visibility: visible;
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  .user-container {
+    margin-top: 4px;
+    height: 42px;
+  }
 }

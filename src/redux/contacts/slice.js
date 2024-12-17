@@ -1,10 +1,11 @@
 import toast from 'react-hot-toast';
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addContact, deleteContact, fetchContacts } from './operations';
+import { addContact, deleteContact, editContact, fetchContacts } from './operations';
 import { logout } from '../auth/operations';
 
 const initialState = {
   items: [],
+  editData: null,
   loading: false,
   error: null,
 };
@@ -12,6 +13,11 @@ const initialState = {
 const slice = createSlice({
   name: 'contacts',
   initialState,
+  reducers: {
+    setEditData: (state, action) => {
+      state.editData = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
@@ -20,8 +26,13 @@ const slice = createSlice({
       .addCase(addContact.fulfilled, (state, { payload }) => {
         state.items.push(payload);
       })
-      .addCase(deleteContact.fulfilled, (state, actions) => {
-        state.items = state.items.filter(item => item.id !== actions.payload.id);
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.items = state.items.filter(item => item.id !== action.payload.id);
+      })
+      .addCase(editContact.fulfilled, (state, action) => {
+        const contact = state.items.find(item => item.id === action.payload.id);
+        contact.name = action.payload.name;
+        contact.number = action.payload.number;
       })
       .addCase(logout.fulfilled, () => initialState)
       .addMatcher(
@@ -51,5 +62,7 @@ const slice = createSlice({
       );
   },
 });
+
+export const { setEditData } = slice.actions;
 
 export default slice.reducer;

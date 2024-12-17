@@ -14,7 +14,8 @@
 }
 
 .field {
-  width: 300px;
+  width: 100%;
+  max-width: 350px;
   height: 28px;
   padding: 10px 16px;
   outline: none;
@@ -25,4 +26,10 @@
 .field:hover,
 .field:focus {
   box-shadow: 0 0 3px 3px #00ced1;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-bottom: 10px;
+  }
 }

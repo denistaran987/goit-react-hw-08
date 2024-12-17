@@ -30,3 +30,9 @@
 .active::after {
   width: 100%;
 }
+
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column;
+  }
+}

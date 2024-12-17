@@ -13,3 +13,14 @@
   font-size: 40px;
   line-height: 1.2;
 }
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: 50px;
+  }
+}
+@media (max-width: 480px) {
+  .section {
+    padding-block: 40px;
+  }
+}

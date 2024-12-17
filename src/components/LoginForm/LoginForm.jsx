@@ -5,14 +5,20 @@ import * as Yup from 'yup';
 import s from './LoginForm.module.css';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router';
-import { IoArrowUndo } from 'react-icons/io5';
+import { IoArrowUndo, IoEyeOutline } from 'react-icons/io5';
 import { selectIsLoading } from '../../redux/auth/selectors';
 import Loader from '../Loader/Loader';
+import { useState } from 'react';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleCheckboxChange = event => {
+    setShowPassword(event.target.checked);
+  };
 
   const initialValues = {
     email: '',
@@ -77,16 +83,31 @@ const LoginForm = () => {
               <Field className={s.field} type="text" name="email" placeholder="Enter your email" />
               <ErrorMessage className={s.error} name="email" component="span" />
             </label>
-            <label className={s.label} style={{ display: 'flex', flexDirection: 'column' }}>
-              Password
-              <Field
-                className={s.field}
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-              />
+            <div className={s['container-field']}>
+              <label
+                className={s['label-password']}
+                style={{ display: 'flex', flexDirection: 'column', rowGap: '6px' }}
+              >
+                Password
+                <Field
+                  className={s.field}
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Enter your password"
+                />
+              </label>
               <ErrorMessage className={s.error} name="password" component="span" />
-            </label>
+              <label className={s['label-checkbox']}>
+                <IoEyeOutline />
+                <Field
+                  className={s['field-checkbox']}
+                  type="checkbox"
+                  name="checkbox"
+                  checked={showPassword}
+                  onChange={handleCheckboxChange}
+                />
+              </label>
+            </div>
             <button className={s.button} type="submit">
               Log In
             </button>
