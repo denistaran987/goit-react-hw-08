@@ -103,7 +103,7 @@ const RegistrationForm = () => {
             </label>
             <label className={s.label}>
               Email
-              <Field className={s.field} type="text" name="email" placeholder="Enter your email" />
+              <Field className={s.field} type="email" name="email" placeholder="Enter your email" />
               <ErrorMessage className={s.error} name="email" component="span" />
             </label>
             <div className={s['container-field']}>
